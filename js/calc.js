@@ -1,22 +1,27 @@
-function calc (a,b,operator) {
+function calc (a, b, operator) {
     let result;
-    if ( !a || !b || (typeof a != 'number') || (typeof b != 'number')  ) {
+    
+    const isNotValid = ( a === undefined || b === undefined || typeof a != 'number' || typeof b != 'number' );  //Проблема только с null
+
+    if ( isNotValid ) {
         result = "Error";
-    } else if (!operator) {
+    } else if (operator === "+") {
+        result = a + b;
+    } else if (operator === "-") {
+        result = a - b; 
+    } else if (operator === "*") {
+        result = a * b;
+    } else if (operator === "/") {
+        if (b === 0) { 
+            result = "Error! Division by zero is not possible"
+        } else {
+            result = a / b;
+        }
+    }  else {
         result = "Unknown operation"
-    } else if (operator ===("+")) {
-        result = a+b;
-    } else if (operator === ("-")) {
-        result = a-b; 
-    } else if (operator === ("*")) {
-        result = a*b;
-    } else if (operator === ("/")) {
-        result = a/b;
-        if (b===0) { 
-            result = "Error! Division by zero is not possible"}
-    }  
+    }
+
     return result;
 }
 
-calc(5,2,"-");
-console.log( calc(5,2,"-") );
+console.log( calc() ); 
