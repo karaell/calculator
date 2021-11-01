@@ -1,9 +1,11 @@
 function calc (a, b, operator) {
     let result;
     
-    const isNotValid = ( a === undefined || b === undefined || typeof a != 'number' || typeof b != 'number' );  //Проблема только с null
-
-    if ( isNotValid ) {
+    function isNotValidOperand (operand) {
+        return typeof operand != 'number' || !isFinite(operand);
+    }
+    
+    if ( isNotValidOperand(a) || isNotValidOperand(b) ) {
         result = "Error";
     } else if (operator === "+") {
         result = a + b;
