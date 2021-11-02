@@ -1,11 +1,9 @@
 function calc (a, b, operator) {
     let result;
     
-    function isNotValidOperand (operand) {
-        return typeof operand != 'number' || isFinite(operand);
-    }
-    
-    if ( isNotValidOperand(a) || isNotValidOperand(b) ) {
+    const isNotValidOperand = ( typeof a != 'number' || typeof b != 'number' );
+ 
+    if ( isNotValidOperand ) {
         result = "Error";
     } else if (operator === "+") {
         result = a + b;
@@ -14,7 +12,11 @@ function calc (a, b, operator) {
     } else if (operator === "*") {
         result = a * b;
     } else if (operator === "/") {
-        result = a / b;
+        if (b === 0) { 
+            result = "Error! Division by zero is not possible";
+        } else {
+            result = a / b;
+        }
     }  else {
         result = "Unknown operation";
     }
@@ -25,8 +27,8 @@ function calc (a, b, operator) {
 console.log(calc(5))
 
 
-/* console.log( calc(1, NaN, "/")); // Error
-console.log( calc(1, 0, "/")); //Error
+console.log( calc(1, NaN, "/")); 
+console.log( calc(1, 0, "/")); 
 console.log( calc(1, 2, "=")); 
 console.log( calc(1, 0, null));
-console.log( calc(null, 2, "+")); */
+console.log( calc(null, 2, "+")); 

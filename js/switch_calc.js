@@ -1,6 +1,6 @@
 function calc (a, b, operator) {
         
-    const isValidOperand = ( (typeof a === 'number') && (typeof b === 'number')  && b != 0 )
+    const isValidOperand = ( typeof a === 'number' && typeof b === 'number' )
     
     if ( isValidOperand ) {
     switch (operator) {
@@ -14,8 +14,11 @@ function calc (a, b, operator) {
             return a * b;
 
         case "/" :
-            return a / b;
-
+            if (b === 0) { 
+                return "Error! Division by zero is not possible";
+            } else {
+                result = a / b;
+            }
         default:
             return "Unknown operation"
         }
@@ -24,4 +27,4 @@ function calc (a, b, operator) {
     }
 } 
 
-console.log( calc());
+console.log( calc(1,0,'/'));
