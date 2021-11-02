@@ -27,4 +27,4 @@ function calc (a, b, operator) {
     }
 } 
 
-console.log( calc(1,0,'/'));
+console.log( calc());
