@@ -1,6 +1,6 @@
 function calc (a, b, operator) {
         
-    const isValidOperand = ( typeof a === 'number' && typeof b === 'number' )
+    const isValidOperand = ( typeof a === 'number' && typeof b === 'number' );
     
     if ( isValidOperand ) {
     switch (operator) {
@@ -19,8 +19,12 @@ function calc (a, b, operator) {
             } else {
                 result = a / b;
             }
+
+        case "**" :
+            return a ** b;
+
         default:
-            return "Unknown operation"
+            return "Unknown operation";
         }
     } else {
         return "Error";

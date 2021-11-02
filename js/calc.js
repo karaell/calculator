@@ -13,7 +13,7 @@ function calc (a, b, operator) {
         result = a * b;
     } else if (operator === "/") {
         if (b === 0) { 
-            return "Error! Division by zero is not possible";
+            result = "Error! Division by zero is not possible";
         } else {
             result = a / b;
         }
