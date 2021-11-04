@@ -4,24 +4,31 @@ function calc (a, b, operator) {
     
     if ( isValidOperand ) {
     switch (operator) {
-        case "+" :
+        case "sum" :
             return a + b;
 
-        case "-" :
+        case "sub" :
             return a - b;
         
-        case "*" :
+        case "mult" :
             return a * b;
 
-        case "/" :
+        case "div" :
             if (b === 0) { 
                 return "Error! Division by zero is not possible";
             } else {
-                result = a / b;
+                return a / b;
             }
 
-        case "**" :
+        case "exp" :
             return a ** b;
+        
+         case "rem" :
+            if (b === 0) { 
+                return "Error! Division by zero is not possible";
+            } else {
+                return a % b;
+            }
 
         default:
             return "Unknown operation";

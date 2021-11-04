@@ -5,18 +5,26 @@ function calc (a, b, operator) {
     
     if ( isNotValidOperand ) {
         result = "Error";
-    } else if (operator === "+") {
+    } else if (operator === "sum") {
         result = a + b;
-    } else if (operator === "-") {
+    } else if (operator === "sub") {
         result = a - b; 
-    } else if (operator === "*") {
+    } else if (operator === "mult") {
         result = a * b;
-    } else if (operator === "/") {
+    } else if (operator === "exp") {
+         result = a ** b;
+    } else if (operator === "div") {
         if (b === 0) { 
             result = "Error! Division by zero is not possible";
         } else {
             result = a / b;
-        }
+        } 
+    } else if (operator === "rem") {
+        if (b === 0) { 
+            result = "Error! Division by zero is not possible";
+        } else {
+            result = a % b;
+        }   
     }  else {
         result = "Unknown operation";
     }
