@@ -4,8 +4,8 @@ const list = {
     "write a post": "To Do",
    }
 
-   
-function changeStatus (name, status) { // будет менять статус задачи 
+  
+function changeStatus (name, status) { // меняет статус задачи 
     list[name] = status;
 }
 
@@ -23,39 +23,40 @@ function showList () { // выводит весь список дел
 
     console.log ( "To Do:" )
     for (let name in list) {
-         if (list[name] == "To Do") {
-            console.log ( " " + name + "," );
+         if (list[name] === "To Do") {
+            console.log ( " " + '"' + name + '"' );
             count = true;
         } 
     }
     if (!count) {
         console.log (" -");
     }
+    count = false;
 
 
     console.log ( "In Progress:" )
     for (let name in list) {
         if (list[name] === "In Progress") {
-            console.log ( " " + name );
+            console.log ( " " + '"' + name + '"' );
             count = true;
         } 
     }
     if (!count) {
         console.log (" -");
     }
-
+    count = false;
 
     console.log ( "Done:" )
     for (let name in list) {
         if (list[name] === "Done") {
-            console.log ( " " + name);
+            console.log ( " " + '"' + name + '"' );
             count = true;
         }
     }
     if (!count) {
         console.log (" -");
     }
-
+    count = false;
 }
 
 
