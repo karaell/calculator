@@ -28,7 +28,11 @@ function showList () { // выводит весь список дел
             count = true;
         } 
     }
-    
+    if (!count) {
+        console.log (" -");
+    }
+
+
     console.log ( "In Progress:" )
     for (let name in list) {
         if (list[name] === "In Progress") {
@@ -36,7 +40,11 @@ function showList () { // выводит весь список дел
             count = true;
         } 
     }
-    
+    if (!count) {
+        console.log (" -");
+    }
+
+
     console.log ( "Done:" )
     for (let name in list) {
         if (list[name] === "Done") {
@@ -44,7 +52,6 @@ function showList () { // выводит весь список дел
             count = true;
         }
     }
-
     if (!count) {
         console.log (" -");
     }
