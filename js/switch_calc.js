@@ -23,7 +23,7 @@ function calc (a, b, operator) {
         case "exp" :
             return a ** b;
         
-         case "rem" :
+        case "rem" :
             if (b === 0) { 
                 return "Error! Division by zero is not possible";
             } else {
@@ -39,3 +39,5 @@ function calc (a, b, operator) {
 } 
 
 console.log( calc());
+
+

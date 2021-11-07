@@ -21,9 +21,9 @@ function calc (a, b, operator) {
     } else {
         return 'Unknown operation';
     }
-
 }
 
-console.log (calc());
+
+console.log (calc(2,2,'div'));
 
 
