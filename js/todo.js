@@ -18,20 +18,37 @@ function deleteTask (name) { // удаляет задачу
 }
 
 function showList () { // выводит весь список дел 
+    
+    let count = false;
+
+    console.log ( "To Do:" )
     for (let name in list) {
-        if (list[name] == "To Do") {
-            console.log ( "To Do:")
+         if (list[name] == "To Do") {
+            console.log ( " " + name + "," );
+            count = true;
+        } 
+    }
+    
+    console.log ( "In Progress:" )
+    for (let name in list) {
+        if (list[name] === "In Progress") {
             console.log ( " " + name );
-        } else if (list[name] === "In Progress") {
-            console.log ( "In Progress:")
-            console.log ( " " + name );
-        } else if (list[name] === "Done") {
-            console.log ( "Done:")
+            count = true;
+        } 
+    }
+    
+    console.log ( "Done:" )
+    for (let name in list) {
+        if (list[name] === "Done") {
             console.log ( " " + name);
-        } else if ( !(name in list)) {
-            console.log ( " " + "-" )
+            count = true;
         }
     }
+
+    if (!count) {
+        console.log (" -");
+    }
+
 }
 
 
@@ -41,5 +58,4 @@ deleteTask ( "have a walk" );
 changeStatus ( "create a task", "To Do");
 changeStatus ( "make a bed", "To Do" );
 changeStatus ( "write a post", "In Progress" );
-
-console.log (showList(list));
+showList();
