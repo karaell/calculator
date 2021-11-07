@@ -24,7 +24,7 @@ function showList () { // выводит весь список дел
     console.log ( "To Do:" )
     for (let name in list) {
          if (list[name] === "To Do") {
-            console.log ( " " + '"' + name + '"' );
+            console.log (` "${name}"`);
             count = true;
         } 
     }
@@ -37,7 +37,7 @@ function showList () { // выводит весь список дел
     console.log ( "In Progress:" )
     for (let name in list) {
         if (list[name] === "In Progress") {
-            console.log ( " " + '"' + name + '"' );
+            console.log (` "${name}"`);
             count = true;
         } 
     }
@@ -49,7 +49,7 @@ function showList () { // выводит весь список дел
     console.log ( "Done:" )
     for (let name in list) {
         if (list[name] === "Done") {
-            console.log ( " " + '"' + name + '"' );
+            console.log (` "${name}"`);
             count = true;
         }
     }
