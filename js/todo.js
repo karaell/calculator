@@ -1,28 +1,26 @@
-const statusInProgress = "In Progress";
-const statusDone = "Done";
-const statusToDo = "To Do";
+const STATUS_IN_PROGRESS = "In Progress";
+const STATUS_DONE = "Done";
+const STATUS_TO_DO = "To Do";
 
 const list = {
-    "create a task": statusInProgress,
-    "make a bed": statusDone,
-    "write a post": statusToDo,
+    "create a task": STATUS_IN_PROGRESS,
+    "make a bed": STATUS_DONE,
+    "write a post": STATUS_TO_DO,
    }
 
 function isNameInList (name) {
-    if (name in list) {
-        return true;
-    }
+    return name in list; // имя есть - будет true
 }
 
-function changeStatus (name, status = statusToDo) { 
-    const isValidStatus = (status === statusInProgress || status === statusDone || status === statusToDo )
+function changeStatus (name, status = STATUS_TO_DO) { 
+    const isValidStatus = (status === STATUS_IN_PROGRESS || status === STATUS_DONE || status === STATUS_TO_DO )
     if ( isNameInList(name) && isValidStatus ) {
     list[name] = status;
     }
 }
 
 function addTask (name) {
-    if ( !(isNameInList(name)) ) {
+    if ( !isNameInList(name) ) {
     list[name] = undefined;
     changeStatus (name);
     }
@@ -39,7 +37,7 @@ function choiceOfStatus (status) {
     console.log (status + ":");
     for ( let name in list ) { 
         if (list[name] === status) {
-            console.log (name);
+            console.log (` "${name}"`);
             count = true;
         }
     }
@@ -50,18 +48,27 @@ function choiceOfStatus (status) {
 }
 
 function showList () {
-    choiceOfStatus (statusToDo);
-    choiceOfStatus (statusInProgress);
-    choiceOfStatus (statusDone);
+    choiceOfStatus (STATUS_TO_DO);
+    choiceOfStatus (STATUS_IN_PROGRESS);
+    choiceOfStatus (STATUS_DONE);
 }
 
+addTask ( "have a walk" );
+changeStatus ( "have a walk", "Done" );
+deleteTask ( "have a walk" );
+changeStatus ( "create a task", "To Do");
+changeStatus ( "make a bed", "To Do" );
+changeStatus ( "write a post", "In Progress" );
+showList(); 
+
+// НЕ СМОТРЕТЬ
 /* function showList () {  
     
     let count = false;
 
-    console.log ( statusToDo + ":" )
+    console.log ( STATUS_TO_DO + ":" )
     for (let name in list) {
-         if (list[name] === statusToDo) {
+         if (list[name] === STATUS_TO_DO) {
             console.log (` "${name}"`);
             count = true;
         } 
@@ -72,9 +79,9 @@ function showList () {
     count = false;
 
 
-    console.log ( statusInProgress + ":" )
+    console.log ( STATUS_IN_PROGRESS + ":" )
     for (let name in list) {
-        if (list[name] === statusInProgress) {
+        if (list[name] === STATUS_IN_PROGRESS) {
             console.log (` "${name}"`);
             count = true;
         } 
@@ -84,9 +91,9 @@ function showList () {
     }
     count = false;
 
-    console.log ( tatusDone + ":" )
+    console.log ( STATUS_DONE + ":" )
     for (let name in list) {
-        if (list[name] === tatusDone) {
+        if (list[name] === STATUS_DONE) {
             console.log (` "${name}"`);
             count = true;
         }
@@ -98,10 +105,3 @@ function showList () {
 } */
 
 
-addTask ( "have a walk" );
-changeStatus ( "have a walk", "Done" );
-deleteTask ( "have a walk" );
-changeStatus ( "create a task", "To Do");
-changeStatus ( "make a bed", "To Do" );
-changeStatus ( "write a post", "In Progress" );
-showList(); 
