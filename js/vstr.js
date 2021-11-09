@@ -1,7 +1,3 @@
-function conversionOfString (str) {
-    
-}
-
 function showVerticalMessage (str) {
     
     let newStr = str.charAt(0).toUpperCase() + str.slice(1);
@@ -14,7 +10,7 @@ function showVerticalMessage (str) {
     
     
     for (let char of newStr) {
-        console.log (char );
+        console.log (char);
     }
     
 }
