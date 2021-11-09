@@ -4,10 +4,7 @@ function showVerticalMessage (str) {
        
     if (newStr.length > 10) {
         newStr = newStr.slice (0, 10);
-    } else { 
-        newStr;
-    }; 
-    
+    }     
     
     for (let char of newStr) {
         console.log (char);
