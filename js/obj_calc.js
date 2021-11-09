@@ -26,4 +26,5 @@ function calc (a, b, operator) {
 
 console.log (calc(2,2,'div'));
 
+// Сразу после объекта можно написать: console.log(operations) -- тогда значения подставятся в каждое свойство и выведется в консоль
 
