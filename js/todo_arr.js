@@ -3,7 +3,6 @@ const STATUS_DONE = "Done";
 const STATUS_TO_DO = "To Do";
 
 const PRIORITY_LOW = "low";
-const PRIORITY_MEDIUM = "medium";
 const PRIORITY_HIGH = "high";
 
 const list = [ 
@@ -23,67 +22,46 @@ const list = [
     id: 3,
     name: "create a task",
     status: STATUS_IN_PROGRESS,
-    priority: PRIORITY_MEDIUM 
+    priority: PRIORITY_HIGH 
 } 
 ] 
 
-//let indexOfTask = ""
+
 function changeStatus (nameOfTask, statusOfTask = STATUS_TO_DO) { 
-    
-        indexOfTask = list.findIndex(item => item.name == nameOfTask)
-        
-         // получаем индекс, в котором объект
-        /* list.splice (indexOfTask, 0, obj = {
-            id: ,
-            name: nameOfTask,
-            status: statusOfTask,
-            priority:
-        }) */
-    
-        //
-    /* let findName = list.find (item => item.name == nameOfTask);
-    if ( findName ) {
-        nameOfTask = statusOfTask; */
-    
 
-
-    //list.name == nameOfTask;
-
-    //list.splice (indexOfTask, 0, nameOfTask: status )
-    
-    /* list.find (function (nameOfTask) {
-        if (item.name == nameOfTask) {  }
-    } )
-     */
-    
-
-    //indexOfTask.splice()
-
-    //list.splice (indexOfTask, 0, {status: statusOfTask})
-    
+    какашка (какашка){сделать какашку; вернуть алмаз}
 }
 
 
-function addTask (name, priority, identifier) {
+function addTask (name, priority = PRIORITY_HIGH) {
+        
+    let numberOfElements = list.length;
+       
     list.push ({
-        id: identifier,
+        id: numberOfElements + 1,
         name: name,
         status: STATUS_TO_DO,
         priority: priority,
     })   
 } 
 
-function deleteTask (nameOfTask) {  
-    let indexOfTask = list.findIndex ( function (item) {
-        item.name == nameOfTask;
-    })
-    list.splice(--indexOfTask, 1);  
+function deleteTask (nameOfTask) { 
+     let indexOfTask = list.findIndex ( function (item) {
+        return item.name == nameOfTask; 
+    });
+
+    list.splice(indexOfTask, 1); 
+    
+    list.forEach ( function (item, index) {
+        return item.id = index + 1;           // to change Id
+    } )
+    
 }
 
-
-
-//changeStatus ("make a bed", STATUS_TO_DO)
-addTask ("test", "high", 4)
+addTask ("test", "high")
+addTask ("marafon", "low")
+addTask ("help")
+deleteTask ("marafon")
 addTask ("marafon")
-deleteTask ("test")
 console.log (list)
+ 
