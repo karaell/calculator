@@ -28,17 +28,15 @@ const list = [
 
 
 function changeStatus (nameOfTask, statusOfTask = STATUS_TO_DO) { 
-
-    какашка (какашка){сделать какашку; вернуть алмаз}
+    list.find ( function (item) {
+        if (item.name == nameOfTask) { return item.status = statusOfTask }
+    } );   
 }
 
 
-function addTask (name, priority = PRIORITY_HIGH) {
-        
-    let numberOfElements = list.length;
-       
+function addTask (name, priority = " ") {
     list.push ({
-        id: numberOfElements + 1,
+        id: list.length + 1,
         name: name,
         status: STATUS_TO_DO,
         priority: priority,
@@ -46,22 +44,69 @@ function addTask (name, priority = PRIORITY_HIGH) {
 } 
 
 function deleteTask (nameOfTask) { 
-     let indexOfTask = list.findIndex ( function (item) {
+    let indexOfTask = list.findIndex ( function (item) {
         return item.name == nameOfTask; 
     });
 
     list.splice(indexOfTask, 1); 
     
     list.forEach ( function (item, index) {
-        return item.id = index + 1;           // to change Id
+        return item.id = index + 1;           // to change Id after delete
     } )
     
 }
 
-addTask ("test", "high")
-addTask ("marafon", "low")
-addTask ("help")
-deleteTask ("marafon")
-addTask ("marafon")
-console.log (list)
+function choiceOfStatus (status) {
+    let count = false;
+
+    console.log (status + ":");
+    list.filter (function (item) {
+        if (item.status === status) {
+        console.log (" " + item.name)
+        count = true;
+    }
+    })
+    if (!count) {
+        console.log (" -")
+    }
+    count = false;
+}
+
+function choiceOfPriotiry (priority) {
+    let count = false;
+
+    console.log (priority + ":");
+    list.filter (function (item) {
+        if (item.priority === priority) {
+        console.log (" " + item.name)
+        count = true;
+    }
+    })
+    if (!count) {
+        console.log (" -")
+    }
+    count = false;
+}
+
+function showList (group) {
+    
+    switch (group) {
+        case "status":
+            choiceOfStatus (STATUS_TO_DO);
+            choiceOfStatus (STATUS_IN_PROGRESS);
+            choiceOfStatus (STATUS_DONE);
+        break;
+
+        case "priority":
+            choiceOfPriotiry (PRIORITY_HIGH);
+            choiceOfPriotiry (PRIORITY_LOW);
+        break;
+        default: console.log ("Выберите группу: priority или status")
+    }
+              
+}
+
+changeStatus ("make a bed", STATUS_TO_DO)
+showList("priority")
+
  
