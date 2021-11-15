@@ -31,7 +31,7 @@ function changeStatus (nameOfTask, statusOfTask = STATUS_TO_DO) {
     list.find ( function (item) {
         if (item.name == nameOfTask) { return item.status = statusOfTask }
     } );   
-}
+};
 
 
 function addTask (name, priority = " ") {
@@ -41,7 +41,7 @@ function addTask (name, priority = " ") {
         status: STATUS_TO_DO,
         priority: priority,
     })   
-} 
+};
 
 function deleteTask (nameOfTask) { 
     let indexOfTask = list.findIndex ( function (item) {
@@ -52,12 +52,10 @@ function deleteTask (nameOfTask) {
     
     list.forEach ( function (item, index) {
         return item.id = index + 1;           // to change id after delete
-    } )
-    
-}
+    })  
+};
 
 function choiceOfKey (key) {
-    
     let count = false;
 
     console.log (key + ":");
@@ -65,13 +63,14 @@ function choiceOfKey (key) {
     const choisePriorityOrStatus = item.priority === key || item.status === key;
 
 	if ( choisePriorityOrStatus ) {
-        console.log (" " + item.name)
+        console.log (" " + item.name);
         count = true;
-    } 
+        } 
     })
-    if (!count) {
-        console.log (" -")
-    }
+
+    if (!count) { 
+        console.log (" -") 
+    };
     count = false;
 }
 
