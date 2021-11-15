@@ -51,36 +51,23 @@ function deleteTask (nameOfTask) {
     list.splice(indexOfTask, 1); 
     
     list.forEach ( function (item, index) {
-        return item.id = index + 1;           // to change Id after delete
+        return item.id = index + 1;           // to change id after delete
     } )
     
 }
 
-function choiceOfStatus (status) {
+function choiceOfKey (key) {
+    
     let count = false;
 
-    console.log (status + ":");
+    console.log (key + ":");
     list.filter (function (item) {
-        if (item.status === status) {
+    const choisePriorityOrStatus = item.priority === key || item.status === key;
+
+	if ( choisePriorityOrStatus ) {
         console.log (" " + item.name)
         count = true;
-    }
-    })
-    if (!count) {
-        console.log (" -")
-    }
-    count = false;
-}
-
-function choiceOfPriotiry (priority) {
-    let count = false;
-
-    console.log (priority + ":");
-    list.filter (function (item) {
-        if (item.priority === priority) {
-        console.log (" " + item.name)
-        count = true;
-    }
+    } 
     })
     if (!count) {
         console.log (" -")
@@ -92,21 +79,20 @@ function showList (group) {
     
     switch (group) {
         case "status":
-            choiceOfStatus (STATUS_TO_DO);
-            choiceOfStatus (STATUS_IN_PROGRESS);
-            choiceOfStatus (STATUS_DONE);
+            choiceOfKey (STATUS_TO_DO);
+            choiceOfKey (STATUS_IN_PROGRESS);
+            choiceOfKey (STATUS_DONE);
         break;
 
         case "priority":
-            choiceOfPriotiry (PRIORITY_HIGH);
-            choiceOfPriotiry (PRIORITY_LOW);
+            choiceOfKey (PRIORITY_HIGH);
+            choiceOfKey (PRIORITY_LOW);
         break;
         default: console.log ("Выберите группу: priority или status")
     }
               
 }
 
-changeStatus ("make a bed", STATUS_TO_DO)
 showList("priority")
 
  
