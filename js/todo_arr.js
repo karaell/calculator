@@ -5,64 +5,44 @@ const STATUS_TO_DO = "To Do";
 const PRIORITY_LOW = "low";
 const PRIORITY_HIGH = "high";
 
-const list = [ 
-{ 
-    id: 1,
-    name: 'create a post',
-    status: STATUS_TO_DO,
-    priority: PRIORITY_LOW  
-}, 
-{ 
-    id: 2,
-    name: 'make a bed',
-    status: STATUS_DONE,
-    priority: PRIORITY_HIGH  
-},
-{
-    id: 3,
-    name: "create a task",
-    status: STATUS_IN_PROGRESS,
-    priority: PRIORITY_HIGH 
-} 
-] 
+let countId = 1;
+
+const list = [ ] 
 
 
-function changeStatus (nameOfTask, statusOfTask = STATUS_TO_DO) { 
+function changeStatus (taskName, taskStatus = STATUS_TO_DO) { 
     list.find ( function (item) {
-        if (item.name == nameOfTask) { return item.status = statusOfTask }
+        if (item.name === taskName) { return item.status = taskStatus }
     } );   
 };
 
 
-function addTask (name, priority = " ") {
+function addTask (name, priority = PRIORITY_LOW) {
     list.push ({
-        id: list.length + 1,
-        name: name,
+        id: countId,
+        name,
         status: STATUS_TO_DO,
-        priority: priority,
-    })   
+        priority,
+    })
+    countId++;
 };
 
-function deleteTask (nameOfTask) { 
-    let indexOfTask = list.findIndex ( function (item) {
-        return item.name == nameOfTask; 
+function deleteTask (taskName) { 
+    let taskIndex = list.findIndex ( function (item) {
+        return item.name == taskName; 
     });
 
-    list.splice(indexOfTask, 1); 
-    
-    list.forEach ( function (item, index) {
-        return item.id = index + 1;           // to change id after delete
-    })  
+    list.splice(taskIndex, 1); 
 };
 
-function choiceOfKey (key) {
+function keySelection (key) {
     let count = false;
 
     console.log (key + ":");
     list.filter (function (item) {
-    const choisePriorityOrStatus = item.priority === key || item.status === key;
+    const choicePriorityOrStatus = item.priority === key || item.status === key;
 
-	if ( choisePriorityOrStatus ) {
+	if ( choicePriorityOrStatus ) {
         console.log (" " + item.name);
         count = true;
         } 
@@ -78,20 +58,30 @@ function showList (group) {
     
     switch (group) {
         case "status":
-            choiceOfKey (STATUS_TO_DO);
-            choiceOfKey (STATUS_IN_PROGRESS);
-            choiceOfKey (STATUS_DONE);
+            keySelection (STATUS_TO_DO);
+            keySelection (STATUS_IN_PROGRESS);
+            keySelection (STATUS_DONE);
         break;
 
         case "priority":
-            choiceOfKey (PRIORITY_HIGH);
-            choiceOfKey (PRIORITY_LOW);
+            keySelection (PRIORITY_HIGH);
+            keySelection (PRIORITY_LOW);
         break;
         default: console.log ("Выберите группу: priority или status")
     }
               
 }
 
-showList("priority")
+addTask ("create a post", "low") // task 1 
+addTask ("test", "high")         // 2
+addTask ("marafon", "high")      // 3
+changeStatus ("marafon", "Done")
+changeStatus ("test", "Done")
+addTask ("course")               // 4
+deleteTask ("marafon")
+
+console.log (list)
+//showList("status")
+//showList("priority")
 
  
