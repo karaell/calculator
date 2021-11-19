@@ -27,9 +27,9 @@ function addTask (name, priority = PRIORITY_LOW) {
     countId++;
 };
 
-function deleteTask (taskName) { 
+function deleteTask (taskId) { 
     let taskIndex = list.findIndex ( function (item) {
-        return item.name == taskName; 
+        return item.id == taskId; 
     });
 
     list.splice(taskIndex, 1); 
@@ -78,7 +78,7 @@ addTask ("marafon", "high")      // 3
 changeStatus ("marafon", "Done")
 changeStatus ("test", "Done")
 addTask ("course")               // 4
-deleteTask ("marafon")
+deleteTask ("2")
 
 console.log (list)
 //showList("status")
